@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/basic.dart';
 import 'package:intl/intl.dart';
 import 'package:simple_app/new_card_transaction.dart';
 import './models/transcation.dart';
 import './transaction_list.dart';
 import './chart.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() {
   runApp(MyApp());
@@ -167,20 +169,17 @@ class _MyHomeAppState extends State<MyHomeApp> {
       ),
       body: _transactions.isEmpty
           ? Container(
+              alignment: Alignment.center,
+              color: Colors.pink[100],
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      "No Data Found Yet..! :)",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )
-                    // Image.asset(
-                    //   'assets/noData.jpg',
-                    //   fit: BoxFit.cover,
-                    // )
-                  ]),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SpinKitPumpingHeart(
+                    color: Colors.pink,
+                    size: 50.0,
+                  ),
+                ],
+              ),
             )
           : SingleChildScrollView(
               child: Column(
